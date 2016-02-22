@@ -402,6 +402,8 @@ module.exports = JhipsterClientGenerator.extend({
             this.template(ANGULAR_DIR + 'components/form/_uib-pagination.config.js', ANGULAR_DIR + 'components/form/uib-pagination.config.js', this, {});
             this.template(ANGULAR_DIR + 'components/form/_pagination.constants.js', ANGULAR_DIR + 'components/form/pagination.constants.js', this, {});
             if (this.enableTranslation) {
+                this.template(ANGULAR_DIR + 'components/language/_language.constants.js', ANGULAR_DIR + 'components/language/language.constants.js', this, {});
+                this.template(ANGULAR_DIR + 'components/language/_language.filter.js', ANGULAR_DIR + 'components/language/language.filter.js', this, {});
                 this.template(ANGULAR_DIR + 'components/language/_language.controller.js', ANGULAR_DIR + 'components/language/language.controller.js', this, {});
                 this.template(ANGULAR_DIR + 'components/language/_language.service.js', ANGULAR_DIR + 'components/language/language.service.js', this, {});
             }
@@ -409,13 +411,16 @@ module.exports = JhipsterClientGenerator.extend({
             this.copyJs(ANGULAR_DIR + 'components/login/_login.service.js', ANGULAR_DIR + 'components/login/login.service.js', this, {});
             this.template(ANGULAR_DIR + 'components/login/_login.controller.js', ANGULAR_DIR + 'components/login/login.controller.js', this, {});
             this.template(ANGULAR_DIR + 'components/util/_base64.service.js', ANGULAR_DIR + 'components/util/base64.service.js', this, {});
+            this.template(ANGULAR_DIR + 'components/util/_storage.service.js', ANGULAR_DIR + 'components/util/storage.service.js', this, {});
             this.template(ANGULAR_DIR + 'components/util/_capitalize.filter.js', ANGULAR_DIR + 'components/util/capitalize.filter.js', this, {});
             this.template(ANGULAR_DIR + 'components/util/_parse-links.service.js', ANGULAR_DIR + 'components/util/parse-links.service.js', this, {});
-            this.template(ANGULAR_DIR + 'components/util/_truncate.filter.js', ANGULAR_DIR + 'components/util/truncate.filter.js', this, {});
+            this.template(ANGULAR_DIR + 'components/util/_characters.filter.js', ANGULAR_DIR + 'components/util/characters.filter.js', this, {});
+            this.template(ANGULAR_DIR + 'components/util/_words.filter.js', ANGULAR_DIR + 'components/util/words.filter.js', this, {});
             this.template(ANGULAR_DIR + 'components/util/_date-util.service.js', ANGULAR_DIR + 'components/util/date-util.service.js', this, {});
             this.template(ANGULAR_DIR + 'components/util/_data-util.service.js', ANGULAR_DIR + 'components/util/data-util.service.js', this, {});
             this.template(ANGULAR_DIR + 'components/util/_pagination-util.service.js', ANGULAR_DIR + 'components/util/pagination-util.service.js', this, {});
             this.template(ANGULAR_DIR + 'components/util/_sort.directive.js', ANGULAR_DIR + 'components/util/sort.directive.js', this, {});
+            this.template(ANGULAR_DIR + 'components/util/_sort-by.directive.js', ANGULAR_DIR + 'components/util/sort-by.directive.js', this, {});
             // interceptor code
             this.template(ANGULAR_DIR + 'components/interceptor/_auth.interceptor.js', ANGULAR_DIR + 'components/interceptor/auth.interceptor.js', this, {});
             this.template(ANGULAR_DIR + 'components/interceptor/_errorhandler.interceptor.js', ANGULAR_DIR + 'components/interceptor/errorhandler.interceptor.js', this, {});
@@ -424,6 +429,7 @@ module.exports = JhipsterClientGenerator.extend({
             //alert service code
             this.template(ANGULAR_DIR + 'components/alert/_alert.service.js', ANGULAR_DIR + 'components/alert/alert.service.js', this, {});
             this.template(ANGULAR_DIR + 'components/alert/_alert.directive.js', ANGULAR_DIR + 'components/alert/alert.directive.js', this, {});
+            this.template(ANGULAR_DIR + 'components/alert/_alert-error.directive.js', ANGULAR_DIR + 'components/alert/alert-error.directive.js', this, {});
         },
 
         writeAngularMainFiles : function () {
@@ -436,7 +442,8 @@ module.exports = JhipsterClientGenerator.extend({
             this.template(ANGULAR_DIR + 'home/_home.controller.js', ANGULAR_DIR + 'home/home.controller.js', this, {});
 
             // layouts
-            this.template(ANGULAR_DIR + 'layouts/navbar/_navbar.directive.js', ANGULAR_DIR + 'layouts/navbar/navbar.directive.js', this, {});
+            this.template(ANGULAR_DIR + 'layouts/navbar/_active-link.directive.js', ANGULAR_DIR + 'layouts/navbar/active-link.directive.js', this, {});
+            this.template(ANGULAR_DIR + 'layouts/navbar/_active-menu.directive.js', ANGULAR_DIR + 'layouts/navbar/active-menu.directive.js', this, {});
             this.copyHtml(ANGULAR_DIR + 'layouts/navbar/navbar.html', ANGULAR_DIR + 'layouts/navbar/navbar.html');
             this.template(ANGULAR_DIR + 'layouts/navbar/_navbar.controller.js', ANGULAR_DIR + 'layouts/navbar/navbar.controller.js', this, {});
             this.copyHtml(ANGULAR_DIR + 'layouts/error/error.html', ANGULAR_DIR + 'layouts/error/error.html');
@@ -448,7 +455,8 @@ module.exports = JhipsterClientGenerator.extend({
             // services
             this.template(ANGULAR_DIR + 'services/auth/_auth.service.js', ANGULAR_DIR + 'services/auth/auth.service.js', this, {});
             this.template(ANGULAR_DIR + 'services/auth/_principal.service.js', ANGULAR_DIR + 'services/auth/principal.service.js', this, {});
-            this.template(ANGULAR_DIR + 'services/auth/_authority.directive.js', ANGULAR_DIR + 'services/auth/authority.directive.js', this, {});
+            this.template(ANGULAR_DIR + 'services/auth/_has-any-authority.directive.js', ANGULAR_DIR + 'services/auth/has-any-authority.directive.js', this, {});
+            this.template(ANGULAR_DIR + 'services/auth/_has-authority.directive.js', ANGULAR_DIR + 'services/auth/has-authority.directive.js', this, {});
             if (this.authenticationType == 'oauth2') {
                 this.template(ANGULAR_DIR + 'services/auth/_auth.oauth2.service.js', ANGULAR_DIR + 'services/auth/auth.oauth2.service.js', this, {});
             } else if (this.authenticationType == 'jwt') {
@@ -535,16 +543,20 @@ module.exports = JhipsterClientGenerator.extend({
                 'app/components/interceptor/notification.interceptor.js',
                 'app/components/login/login.service.js',
                 'app/components/login/login.controller.js',
-                'app/components/util/truncate.filter.js',
+                'app/components/util/characters.filter.js',
+                'app/components/util/words.filter.js',
                 'app/components/util/base64.service.js',
+                'app/components/util/storage.service.js',
                 'app/components/util/capitalize.filter.js',
                 'app/components/alert/alert.service.js',
                 'app/components/alert/alert.directive.js',
+                'app/components/alert/alert-error.directive.js',
                 'app/components/util/parse-links.service.js',
                 'app/components/util/date-util.service.js',
                 'app/components/util/data-util.service.js',
                 'app/components/util/pagination-util.service.js',
                 'app/components/util/sort.directive.js',
+                'app/components/util/sort-by.directive.js',
                 // entities
                 'app/entities/entity.state.js',
                 // home
@@ -552,12 +564,14 @@ module.exports = JhipsterClientGenerator.extend({
                 'app/home/home.controller.js',
                 // layouts
                 'app/layouts/error/error.state.js',
-                'app/layouts/navbar/navbar.directive.js',
+                'app/layouts/navbar/active-link.directive.js',
+                'app/layouts/navbar/active-menu.directive.js',
                 'app/layouts/navbar/navbar.controller.js',
                 // services
                 'app/services/auth/auth.service.js',
                 'app/services/auth/principal.service.js',
-                'app/services/auth/authority.directive.js',
+                'app/services/auth/has-any-authority.directive.js',
+                'app/services/auth/has-authority.directive.js',
                 'app/services/auth/account.service.js',
                 'app/services/auth/activate.service.js',
                 'app/services/auth/password.service.js',
@@ -569,6 +583,8 @@ module.exports = JhipsterClientGenerator.extend({
                     'bower_components/messageformat/locale/en.js',
                     'bower_components/messageformat/locale/fr.js',
                     'app/components/language/language.service.js',
+                    'app/components/language/language.constants.js',
+                    'app/components/language/language.filter.js',
                     'app/components/language/language.controller.js']);
             }
             if (this.enableSocialSignIn) {

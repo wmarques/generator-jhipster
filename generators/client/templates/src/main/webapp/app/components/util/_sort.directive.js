@@ -41,17 +41,5 @@
                   this.applyClass($element.find('th[jh-sort-by=\'' + $scope.predicate + '\']'));
               }]
           };
-      }).directive('jhSortBy', function () {
-          return {
-              restrict: 'A',
-              scope: false,
-              require: '^jhSort',
-              link: function (scope, element, attrs, parentCtrl) {
-                  element.bind('click', function () {
-                      parentCtrl.sort(attrs.jhSortBy);
-                      parentCtrl.applyClass(element);
-                  });
-              }
-          };
       });
 })();
