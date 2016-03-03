@@ -1344,6 +1344,9 @@ module.exports = EntityGenerator.extend({
             if (this.entityAngularJSSuffix){
                 this.data.angularJSSuffix = this.entityAngularJSSuffix;
             }
+            if (this.applicationType == 'microservice'){
+                this.data.microserviceName = this.baseName;
+            }
             this.fs.writeJSON(this.filename, this.data, null, 4);
         },
 
