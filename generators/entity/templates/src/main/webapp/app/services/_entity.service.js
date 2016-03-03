@@ -8,7 +8,9 @@
     <%= entityClass %>.$inject = ['$resource', 'DateUtils'];
 
     function <%= entityClass %> ($resource, DateUtils) {
-        return $resource('api/<%= entityApiUrl %>/:id', {}, {
+        var resourceUrl = <% if (applicationType == 'gateway') {%> '<%= microserviceName %>/' +<% } %> 'api/<%= entityApiUrl %>/:id';
+
+        return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',
