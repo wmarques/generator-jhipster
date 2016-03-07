@@ -83,7 +83,7 @@ gulp.task('images', function () {
 gulp.task('templatecache', function () {
     return gulp.src(config.app + 'app/**/*.html')
         .pipe(templateCache({
-            module: '<%= AngularAppName %>'
+            module: '<%= angularAppName %>'
         }))
         .pipe(gulp.dest(config.app));
 });
@@ -296,7 +296,7 @@ gulp.task('serve', function () {
 });
 
 gulp.task('build', function (cb) {
-    runSequence('clean', 'copy', 'wiredep:app', 'ngconstant:prod', 'eslint', 'usemin', cb);
+    runSequence('clean', 'copy', 'wiredep:app', 'ngconstant:prod', 'eslint', 'templatecache', 'usemin', cb);
 });
 
 gulp.task('default', ['serve']);
