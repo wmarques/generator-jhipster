@@ -3,6 +3,7 @@
 
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
+    templateCache = require('gulp-angular-templatecache'),
     prefix = require('gulp-autoprefixer'),
     cssnano = require('gulp-cssnano'),
     usemin = require('gulp-usemin'),
@@ -77,6 +78,14 @@ gulp.task('images', function () {
         .pipe(imagemin({optimizationLevel: 5}))
         .pipe(gulp.dest(config.dist + 'content/images'))
         .pipe(browserSync.reload({stream: true}));
+});
+
+gulp.task('templatecache', function () {
+    return gulp.src(config.app + 'app/**/*.html')
+        .pipe(templateCache({
+            module: '<%= AngularAppName %>'
+        }))
+        .pipe(gulp.dest(config.app));
 });
 
 <%_ if(useSass) { _%>
