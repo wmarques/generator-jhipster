@@ -282,7 +282,7 @@ module.exports = JhipsterClientGenerator.extend({
 
         composeLanguages: function () {
             if (configOptions.skipI18nQuestion) return;
-            
+
             this.composeLanguagesSub(this, configOptions, 'client');
         }
     },
@@ -639,7 +639,8 @@ module.exports = JhipsterClientGenerator.extend({
                 'app/services/auth/password-reset-init.service.js',
                 'app/services/auth/password-reset-finish.service.js',
                 'app/services/auth/register.service.js',
-                'app/services/user/user.service.js'
+                'app/services/user/user.service.js',
+                'templates.js'
             ];
             if (this.enableTranslation) {
                 appScripts = appScripts.concat([
