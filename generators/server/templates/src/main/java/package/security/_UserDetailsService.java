@@ -31,20 +31,19 @@ public class UserDetailsService implements org.springframework.security.core.use
     @Transactional
     public UserDetails loadUserByUsername(final String login) {
         log.debug("Authenticating {}", login);
-        String lowercaseLogin = login.toLowerCase();
-        Optional<User> userFromDatabase = userRepository.findOneByLogin(lowercaseLogin);
+        Optional<User> userFromDatabase = userRepository.findOneByLogin(login);
         return userFromDatabase.map(user -> {
             if (!user.getActivated()) {
-                throw new UserNotActivatedException("User " + lowercaseLogin + " was not activated");
+                throw new UserNotActivatedException("User " + login + " was not activated");
             }
             List<GrantedAuthority> grantedAuthorities = user.getAuthorities().stream()<% if (databaseType == 'sql' || databaseType == 'mongodb') { %>
                     .map(authority -> new SimpleGrantedAuthority(authority.getName()))<% } %><% if (databaseType == 'cassandra') { %>
                 .map(authority -> new SimpleGrantedAuthority(authority))<% } %>
                 .collect(Collectors.toList());
-            return new org.springframework.security.core.userdetails.User(lowercaseLogin,
+            return new org.springframework.security.core.userdetails.User(login,
                 user.getPassword(),
                 grantedAuthorities);
-        }).orElseThrow(() -> new UsernameNotFoundException("User " + lowercaseLogin + " was not found in the " +
+        }).orElseThrow(() -> new UsernameNotFoundException("User " + login + " was not found in the " +
         "database"));
     }
 }
