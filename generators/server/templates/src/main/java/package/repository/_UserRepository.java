@@ -39,6 +39,8 @@ public interface UserRepository extends <% if (databaseType == 'sql') { %>JpaRep
 
     Optional<User> findOneByEmail(String email);
 
+    Optional<User> findOneByLoginIgnoreCase(String login);
+
     Optional<User> findOneByLogin(String login);
 
     Optional<User> findOneById(<%= pkType %> userId);
