@@ -185,7 +185,7 @@ gulp.task('inject:troubleshoot', function () {
         .pipe(gulp.dest(config.app));
 });
 
-gulp.task('assets:prod', ['images', 'styles', 'html','swagger-ui'], build);
+gulp.task('assets:prod', ['images', 'styles', 'html','swagger-ui']);
 
 gulp.task('html', function () {
     return gulp.src(config.app + 'app/**/*.html')
