@@ -33,11 +33,14 @@
     "zone.js": "0.6.23"
   },
   "devDependencies": {
+    "@types/core-js": "^0.9.32",
     "@types/angular": "1.5.16",
     "@types/angular-animate": "1.5.5",
     "@types/angular-mocks": "1.5.5",
     "@types/jasmine": "2.2.34",
     "angular": "1.5.8",
+    "angular2-template-loader": "^0.4.0",
+    "awesome-typescript-loader": "^1.1.1",
     "bower": "1.7.9",
     "browser-sync": "2.15.0",
     "del": "2.2.2",
@@ -103,6 +106,9 @@
     "proxy-middleware": "0.15.0",
     "run-sequence": "1.2.2",
     "typescript": "^2.0.3",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0",
+    "webpack-merge": "^0.8.4",
     <%_ if (buildTool == 'maven') { _%>
     "xml2js": "0.4.17",
     <%_ } _%>
@@ -112,6 +118,7 @@
     "node": "^4.3"
   },
   "scripts": {
+    "build": "webpack --inline --colors --progress --display-error-details --display-cached",
     "test": "gulp test",
     <%_ if (testFrameworks.indexOf('protractor') > -1) { _%>
     "postinstall": "webdriver-manager update",
