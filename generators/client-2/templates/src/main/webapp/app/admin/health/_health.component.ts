@@ -4,7 +4,7 @@ import { <%=jhiPrefixCapitalized%>HealthService } from './health.service';
 
 @Component({
     selector: '<%=jhiPrefix%>-health',
-    templateUrl: 'app/admin/health/health.html',
+    templateUrl: './health.html',
 })
 export class <%=jhiPrefixCapitalized%>HealthCheckComponent implements OnInit {
     healthData:any;

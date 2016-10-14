@@ -11,7 +11,7 @@ export function UserMgmntStateConfig($stateProvider) {
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/admin/user-management/user-management.html',
+                    templateUrl: './user-management.html',
                     controller: 'UserManagementController',
                     controllerAs: 'vm'
                 }
@@ -61,7 +61,7 @@ export function UserMgmntStateConfig($stateProvider) {
         },
         views: {
             'content@': {
-                templateUrl: 'app/admin/user-management/user-management-detail.html',
+                templateUrl: './user-management-detail.html',
                 controller: 'UserManagementDetailController',
                 controllerAs: 'vm'
             }
@@ -80,7 +80,7 @@ export function UserMgmntStateConfig($stateProvider) {
         },
         onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
             $uibModal.open({
-                templateUrl: 'app/admin/user-management/user-management-dialog.html',
+                templateUrl: './user-management-dialog.html',
                 controller: 'UserManagementDialogController',
                 controllerAs: 'vm',
                 backdrop: 'static',
@@ -109,7 +109,7 @@ export function UserMgmntStateConfig($stateProvider) {
         },
         onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
             $uibModal.open({
-                templateUrl: 'app/admin/user-management/user-management-dialog.html',
+                templateUrl: './user-management-dialog.html',
                 controller: 'UserManagementDialogController',
                 controllerAs: 'vm',
                 backdrop: 'static',
@@ -133,7 +133,7 @@ export function UserMgmntStateConfig($stateProvider) {
         },
         onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
             $uibModal.open({
-                templateUrl: 'app/admin/user-management/user-management-delete-dialog.html',
+                templateUrl: './user-management-delete-dialog.html',
                 controller: 'UserManagementDeleteController',
                 controllerAs: 'vm',
                 size: 'md',

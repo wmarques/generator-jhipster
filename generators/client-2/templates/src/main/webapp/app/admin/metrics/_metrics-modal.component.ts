@@ -3,7 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: '<%=jhiPrefix%>-metrics-modal',
-    templateUrl: 'app/admin/metrics/metrics-modal.html',
+    templateUrl: './metrics-modal.html',
     inputs: ['threadDump', 'dismiss']
 })
 export class <%=jhiPrefixCapitalized%>MetricsMonitoringModalComponent implements OnInit {

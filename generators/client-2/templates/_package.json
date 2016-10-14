@@ -33,11 +33,12 @@
     "zone.js": "0.6.23"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.32",
+    "@types/core-js": "0.9.32",
     "@types/angular": "1.5.16",
     "@types/angular-animate": "1.5.5",
     "@types/angular-mocks": "1.5.5",
     "@types/jasmine": "2.2.34",
+    "@types/node": "6.0.38",
     "angular": "1.5.8",
     "angular2-template-loader": "^0.4.0",
     "awesome-typescript-loader": "^1.1.1",
@@ -106,9 +107,9 @@
     "proxy-middleware": "0.15.0",
     "run-sequence": "1.2.2",
     "typescript": "^2.0.3",
-    "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0",
-    "webpack-merge": "^0.8.4",
+    "webpack": "1.12.9",
+    "webpack-dev-server": "1.14.0",
+    "webpack-merge": "0.8.4",
     <%_ if (buildTool == 'maven') { _%>
     "xml2js": "0.4.17",
     <%_ } _%>
