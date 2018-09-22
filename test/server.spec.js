@@ -41,7 +41,6 @@ describe('JHipster server generator', () => {
             assert.file(expectedFiles.gatling);
             assert.noFile(
                 getFilesForOptions(angularfiles, {
-                    useSass: false,
                     enableTranslation: true,
                     serviceDiscoveryType: false,
                     authenticationType: 'jwt',

@@ -186,7 +186,6 @@ module.exports = class extends BaseGenerator {
                     /* for backward compatibility */
                     this.clientFramework = 'angularX';
                 }
-                this.useSass = configuration.get('useSass');
                 this.enableTranslation = configuration.get('enableTranslation'); // this is enabled by default to avoid conflicts for existing applications
                 this.nativeLanguage = configuration.get('nativeLanguage');
                 this.languages = configuration.get('languages');
@@ -206,7 +205,7 @@ module.exports = class extends BaseGenerator {
                     this.serviceDiscoveryType = false;
                 }
 
-                const clientConfigFound = this.useSass !== undefined;
+                const clientConfigFound = this.clientFramework !== undefined;
                 if (clientConfigFound) {
                     // If translation is not defined, it is enabled by default
                     if (this.enableTranslation === undefined) {
@@ -261,12 +260,10 @@ module.exports = class extends BaseGenerator {
         return {
             askForModuleName: prompts.askForModuleName,
             askForClient: prompts.askForClient,
-            askForClientSideOpts: prompts.askForClientSideOpts,
             askFori18n: prompts.askFori18n,
 
             setSharedConfigOptions() {
                 this.configOptions.clientFramework = this.clientFramework;
-                this.configOptions.useSass = this.useSass;
             }
         };
     }
@@ -283,7 +280,6 @@ module.exports = class extends BaseGenerator {
                 statistics.sendSubGenEvent('generator', 'client', {
                     app: {
                         clientFramework: this.clientFramework,
-                        useSass: this.useSass,
                         enableTranslation: this.enableTranslation,
                         nativeLanguage: this.nativeLanguage,
                         languages: this.languages
@@ -311,7 +307,6 @@ module.exports = class extends BaseGenerator {
                     applicationType: this.applicationType,
                     baseName: this.baseName,
                     clientFramework: this.clientFramework,
-                    useSass: this.useSass,
                     enableTranslation: this.enableTranslation,
                     skipCommitHook: this.skipCommitHook,
                     clientPackageManager: this.clientPackageManager
@@ -409,7 +404,7 @@ module.exports = class extends BaseGenerator {
                     this.BUILD_DIR = 'build/';
                 }
 
-                this.styleSheetExt = this.useSass ? 'scss' : 'css';
+                this.styleSheetExt = 'scss';
                 this.pkType = this.getPkType(this.databaseType);
                 this.apiUaaPath = `${this.authenticationType === 'uaa' ? `${this.uaaBaseName.toLowerCase()}/` : ''}`;
                 this.DIST_DIR = this.BUILD_DIR + constants.CLIENT_DIST_DIR;

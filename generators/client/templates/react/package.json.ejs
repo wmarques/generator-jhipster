@@ -139,11 +139,9 @@ limitations under the License.
     "stripcomment-loader": "0.1.0",
     "style-loader": "0.22.1",
     "swagger-ui": "2.2.10",
-    <%_ if (useSass) { _%>
     "postcss-loader": "3.0.0",
     "sass": "1.13.0",
     "sass-loader": "7.1.0",
-    <%_ } _%>
     <%_ otherModules.forEach(module => { _%>
     "<%= module.name %>": "<%= module.version %>",
     <%_ }); _%>

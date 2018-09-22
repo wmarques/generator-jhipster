@@ -74,7 +74,6 @@ describe('JHipster client generator with blueprint', () => {
                     .withPrompts({
                         baseName: 'jhipster',
                         clientFramework: 'angularX',
-                        useSass: false,
                         enableTranslation: true,
                         nativeLanguage: 'en',
                         languages: ['fr']

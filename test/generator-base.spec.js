@@ -319,7 +319,6 @@ describe('Generator Base', () => {
             it('should produce correct files', () => {
                 const files = require('../generators/client/files-angular').files; // eslint-disable-line global-require
                 const generator = {
-                    useSass: false,
                     enableTranslation: true,
                     serviceDiscoveryType: false,
                     authenticationType: 'jwt',
@@ -336,7 +335,6 @@ describe('Generator Base', () => {
             it('should produce correct files', () => {
                 const files = require('../generators/client/files-angular').files; // eslint-disable-line global-require
                 const generator = {
-                    useSass: false,
                     enableTranslation: true,
                     serviceDiscoveryType: false,
                     authenticationType: 'jwt',

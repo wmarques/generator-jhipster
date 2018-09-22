@@ -1412,11 +1412,7 @@
                                     <goal>yarn</goal>
                                 </goals>
                                 <configuration>
-                                    <%_ if (useSass) { _%>
-                                    <arguments>install --force</arguments>
-                                    <%_ } else { _%>
                                     <arguments>install</arguments>
-                                    <%_ } _%>
                                 </configuration>
                             </execution>
                             <%_ } else if (clientPackageManager === 'npm') { _%>

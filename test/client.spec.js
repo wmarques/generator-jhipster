@@ -20,8 +20,7 @@ describe('JHipster client generator', () => {
                     enableTranslation: true,
                     nativeLanguage: 'en',
                     languages: ['fr'],
-                    clientFramework: 'react',
-                    useSass: true
+                    clientFramework: 'react'
                 })
                 .on('end', done);
         });
@@ -29,7 +28,6 @@ describe('JHipster client generator', () => {
             assert.noFile(expectedFiles.maven);
             assert.file(
                 getFilesForOptions(reactFiles, {
-                    useSass: true,
                     enableTranslation: true,
                     serviceDiscoveryType: false,
                     authenticationType: 'jwt',
@@ -53,8 +51,7 @@ describe('JHipster client generator', () => {
                     enableTranslation: true,
                     nativeLanguage: 'en',
                     languages: ['fr'],
-                    clientFramework: 'angularX',
-                    useSass: true
+                    clientFramework: 'angularX'
                 })
                 .on('end', done);
         });
@@ -65,7 +62,6 @@ describe('JHipster client generator', () => {
             assert.file(expectedFiles.i18nJson);
             assert.file(
                 getFilesForOptions(angularFiles, {
-                    useSass: true,
                     enableTranslation: true,
                     serviceDiscoveryType: false,
                     authenticationType: 'jwt',
@@ -92,8 +88,7 @@ describe('JHipster client generator', () => {
                     enableTranslation: true,
                     nativeLanguage: 'en',
                     languages: ['fr'],
-                    clientFramework: 'angularX',
-                    useSass: true
+                    clientFramework: 'angularX'
                 })
                 .on('end', done);
         });
@@ -104,7 +99,6 @@ describe('JHipster client generator', () => {
             assert.file(expectedFiles.i18nJson);
             assert.file(
                 getFilesForOptions(angularFiles, {
-                    useSass: true,
                     enableTranslation: true,
                     serviceDiscoveryType: false,
                     authenticationType: 'jwt',

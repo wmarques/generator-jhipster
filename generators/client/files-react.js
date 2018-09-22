@@ -53,11 +53,10 @@ const files = {
     ],
     sass: [
         {
-            condition: generator => generator.useSass,
             templates: [{ file: 'postcss.config.js', method: 'copy' }]
         },
         {
-            condition: generator => generator.useSass && generator.enableI18nRTL,
+            condition: generator => generator.enableI18nRTL,
             path: MAIN_SRC_DIR,
             templates: ['app/rtl.scss']
         }
@@ -118,19 +117,8 @@ const files = {
             templates: ['config/websocket-middleware.ts']
         },
         {
-            condition: generator => generator.useSass,
             path: REACT_DIR,
             templates: ['app.scss', '_bootstrap-variables.scss']
-        },
-        {
-            condition: generator => !generator.useSass,
-            path: REACT_DIR,
-            templates: ['app.css']
-        },
-        {
-            condition: generator => !generator.useSass && generator.enableI18nRTL,
-            path: MAIN_SRC_DIR,
-            templates: ['app/rtl.css']
         }
         // {
         //   condition: generator => generator.authenticationType === 'oauth2' || generator.authenticationType === 'jwt' || generator.authenticationType === 'uaa',
@@ -167,14 +155,8 @@ const files = {
             ]
         },
         {
-            condition: generator => generator.useSass,
             path: REACT_DIR,
             templates: ['modules/home/home.scss']
-        },
-        {
-            condition: generator => !generator.useSass,
-            path: REACT_DIR,
-            templates: ['modules/home/home.css']
         }
     ],
     reducers: [
@@ -309,21 +291,11 @@ const files = {
             templates: ['shared/util/cookie-utils.ts']
         },
         {
-            condition: generator => generator.useSass,
             path: REACT_DIR,
             templates: [
                 'shared/layout/header/header.scss',
                 'shared/layout/footer/footer.scss',
                 'shared/layout/password/password-strength-bar.scss'
-            ]
-        },
-        {
-            condition: generator => !generator.useSass,
-            path: REACT_DIR,
-            templates: [
-                'shared/layout/header/header.css',
-                'shared/layout/footer/footer.css',
-                'shared/layout/password/password-strength-bar.css'
             ]
         }
     ],

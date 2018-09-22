@@ -1104,7 +1104,6 @@ module.exports = class extends PrivateBase {
     /**
      * Add new css style to the angular application in "main.css".
      *
-     * @param {boolean} isUseSass - flag indicating if sass should be used
      * @param {string} style - css to add in the file
      * @param {string} comment - comment to add before css code
      *
@@ -1121,10 +1120,8 @@ module.exports = class extends PrivateBase {
      * }
      *
      */
-    addMainCSSStyle(isUseSass, style, comment) {
-        if (isUseSass) {
-            this.addMainSCSSStyle(style, comment);
-        }
+    addMainCSSStyle(style, comment) {
+        this.addMainSCSSStyle(style, comment);
 
         const fullPath = `${CLIENT_MAIN_SRC_DIR}content/css/main.css`;
         let styleBlock = '';

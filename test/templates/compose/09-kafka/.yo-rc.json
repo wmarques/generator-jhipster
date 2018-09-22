@@ -16,7 +16,6 @@
         "messageBroker": "kafka",
         "buildTool": "maven",
         "rememberMeKey": "92b92094c42ee1d918471b00f1543c604888f041",
-        "useSass": false,
         "applicationType": "monolith",
         "testFrameworks": [
             "gatling"
